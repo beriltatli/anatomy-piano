@@ -91,7 +91,7 @@ O an işi yapan parça koyu kenarla vurgulanır. Fazlar şu sırayla ilerler:
 ## Proje yapısı
 
 ```
-piyano-aksiyonu/
+anatomy-piano/
 ├── piyano-aksiyonu.html        derlenmiş sayfa (sistem temasına uyar)
 ├── piyano-aksiyonu-koyu.html   derlenmiş sayfa (her zaman koyu)
 ├── build.mjs                   sayfayı derler: iki şekli, stilleri ve canlı kodu birleştirir
