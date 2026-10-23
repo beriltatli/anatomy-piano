@@ -1,131 +1,133 @@
-# Kuyruklu Piyano · Katman Katman
+# Grand Piano, Layer by Layer
 
-Bir kuyruklu piyanoyu dışarıdan kapalı halde gösteren, sonra kapağını açıp katmanlarına ayıran ve tek bir tuşun mekanizmasını ağır çekimde çalıştıran etkileşimli bir izometrik çizim. Tek bir HTML dosyasıdır: internet bağlantısı, kütüphane ya da sunucu gerektirmez.
+An interactive isometric drawing of a grand piano. It starts closed, then the lid opens and the instrument comes apart one layer at a time. A second drawing shows the action of a single key in slow motion. Everything is in one HTML file, so you don't need a server, a library or an internet connection to open it.
+
+The labels and captions on the page are in Turkish.
 
 <p align="center">
-  <img src="gorseller/katmanlar.gif" alt="Piyano kapalı halden başlayıp katmanlarına ayrılıyor" width="640">
+  <img src="gorseller/katmanlar.gif" alt="The piano starts closed and comes apart into its layers" width="640">
 </p>
 
-## İçindekiler
+## Contents
 
-- [Hızlı başlangıç](#hızlı-başlangıç)
-- [Şekil 1 – Katman katman piyano](#şekil-1--katman-katman-piyano)
-- [Şekil 2 – Tek tuşun aksiyonu](#şekil-2--tek-tuşun-aksiyonu)
-- [Gerçeğe dayalı değerler](#gerçeğe-dayalı-değerler)
-- [Proje yapısı](#proje-yapısı)
-- [Yeniden derleme](#yeniden-derleme)
-- [Sınırlar](#sınırlar)
+- [Getting started](#getting-started)
+- [Figure 1: the piano, layer by layer](#figure-1-the-piano-layer-by-layer)
+- [Figure 2: the action of one key](#figure-2-the-action-of-one-key)
+- [The numbers](#the-numbers)
+- [Project layout](#project-layout)
+- [Building](#building)
+- [Known limitations](#known-limitations)
 
-## Hızlı başlangıç
+## Getting started
 
-`piyano-aksiyonu.html` dosyasını tarayıcıda açın. Sayfa sistemin açık ya da koyu temasına uyar. Her zaman koyu tema için `piyano-aksiyonu-koyu.html` dosyasını kullanın.
+Open `piyano-aksiyonu.html` in a browser. It follows your system's light or dark setting. To always get the dark version, open `piyano-aksiyonu-koyu.html` instead.
 
-| Nerede | Ne yapılır |
+| Where | What to do |
 |---|---|
-| Şekil 1 | Alttaki adım düğmeleri ya da **← →** tuşları katmanları açar. **Home / End** ilk ve son adıma gider. |
-| Şekil 2 | Çizime **basılı tutun** ya da **boşluk** tuşunu basılı tutun; bırakınca tuş geri döner. **1 2 3** tuşları vuruş gücünü p / mf / f yapar. |
-| Şekil 2 | **yakın plan / tüm model** görünümü değiştirir. **ses** düğmesi C6 notasını açar. |
+| Figure 1 | Use the step buttons under the drawing or the **← →** keys to take the piano apart. **Home** and **End** jump to the first and last step. |
+| Figure 2 | **Press and hold** on the drawing, or hold the **space bar**. Let go and the key comes back up. **1**, **2** and **3** set how hard you play: p, mf or f. |
+| Figure 2 | **yakın plan / tüm model** switches between the close-up and the whole model. The **ses** button turns on the sound of the note (C6). |
 
-Dokunulmazsa iki şekil de kendi kendine bir gösteri döngüsü oynatır. İşletim sisteminde "hareketi azalt" açıksa döngü çalışmaz, parçalar doğrudan son konumlarına geçer.
+If you leave the page alone, both figures play through on their own. With "reduce motion" turned on in your system settings they don't, and parts move straight to where they end up.
 
-## Şekil 1 – Katman katman piyano
+## Figure 1: the piano, layer by layer
 
-1,92 m'lik bir kuyruklu piyano, milimetre ölçüsüyle çizildi. Kasa, ayaklar ve pedal lirı yerinde kalır. Katmanlar yukarı kalkar, klavye ve aksiyon da bir çekmece gibi öne çıkar. Kamera her adımda o an görünen parçaları çerçeveler.
+The piano is a 1.92 m grand drawn to scale in millimetres. The case, legs and pedal lyre stay put while the layers above them lift off, and the keyboard and action slide out at the front like a drawer. At each step the view zooms to fit whatever is on show.
 
 | | |
 |:---:|:---:|
-| <img src="gorseller/01-dis-gorunus.png" alt="Kapalı piyano" width="380"><br>**00 · Dış görünüş**<br>Siyah lake kasa, tornalı ayaklar, pirinç tekerlekler, pedal lirı | <img src="gorseller/02-kapaklar-acik.png" alt="Kapak açık" width="380"><br>**01 · Kapaklar açık**<br>Kapak 58° açık, klavye kapağı katlanmış, nota sehpası geride |
-| <img src="gorseller/03-dokum-cerceve.png" alt="Döküm çerçeve kalkıyor" width="380"><br>**02 · Döküm çerçeve**<br>Yaklaşık 20 tonluk tel gerilimini taşıyan altın renkli dökme demir | <img src="gorseller/04-teller.png" alt="Teller kalkıyor" width="380"><br>**03 · Teller**<br>88 nota; pesteki 20 nota bakır sargılı ve çapraz geçiyor |
-| <img src="gorseller/05-ses-tablosu.png" alt="Ses tablosu kalkıyor" width="380"><br>**04 · Ses tablosu ve köprüler**<br>9 mm ladin tabla; altında kasa destekleri ve pim bloğu | <img src="gorseller/06-klavye-aksiyon.png" alt="Klavye öne çıkıyor" width="380"><br>**05 · Klavye ve aksiyon**<br>88 tuş ve 88 çekiç tek parça halinde öne çıkıyor |
+| <img src="gorseller/01-dis-gorunus.png" alt="The closed piano" width="380"><br>**00 · Closed**<br>Black lacquer case, turned legs, brass casters and the pedal lyre | <img src="gorseller/02-kapaklar-acik.png" alt="Lid open" width="380"><br>**01 · Lids open**<br>Lid up at 58°, fallboard folded back, music desk tipped back |
+| <img src="gorseller/03-dokum-cerceve.png" alt="The cast-iron plate lifting off" width="380"><br>**02 · Cast-iron plate**<br>The gold-painted plate that takes nearly 20 tonnes of string tension | <img src="gorseller/04-teller.png" alt="The strings lifting off" width="380"><br>**03 · Strings**<br>88 notes. The bottom 20 are copper-wound and cross over the rest |
+| <img src="gorseller/05-ses-tablosu.png" alt="The soundboard lifting off" width="380"><br>**04 · Soundboard and bridges**<br>A 9 mm spruce board, with the case bracing and the pinblock underneath | <img src="gorseller/06-klavye-aksiyon.png" alt="The keyboard sliding out" width="380"><br>**05 · Keyboard and action**<br>88 keys and 88 hammers come out together as one unit |
 
-Malzemeler hafif renklerle ayrılır: lake siyah kasa, altın renkli döküm çerçeve, ladin ses tablosu, akçaağaç köprü, pim bloğu ve aksiyon, fildişi tuşlar, bakır pes telleri ve kırmızı keçe şerit.
-
-<p align="center">
-  <img src="gorseller/10-koyu-tema.png" alt="Koyu temada ayrılmış piyano" width="520"><br>
-  <sub>Koyu tema</sub>
-</p>
-
-## Şekil 2 – Tek tuşun aksiyonu
-
-Şekil 1'deki klavyeden tek bir tuş: çift kaçışlı (double escapement) bir kuyruklu aksiyonun yandan kesiti, C6 notası (1046,5 Hz). Hareket 25 kat yavaş akar. Jakın kaçışından çekicin tele vuruşuna kadar geçen yaklaşık 1 ms'lik an 220 kata kadar yavaşlatılır. Alt satırda o anki faz ve gerçek zaman (ms) yazar.
+Each material has its own colour: black lacquer for the case, gold for the plate, pale spruce for the soundboard, maple for the bridges, pinblock and action, ivory for the keys, copper for the bass strings and red for the felt.
 
 <p align="center">
-  <img src="gorseller/aksiyon.gif" alt="Tuşa basılınca jak kaçıyor, çekiç tele vuruyor ve yakalayıcı tutuyor" width="640">
+  <img src="gorseller/10-koyu-tema.png" alt="The piano taken apart, dark theme" width="520"><br>
+  <sub>Dark theme</sub>
 </p>
 
-| Dinlenme | Tele vuruş | Yakalayıcı tuttu |
+## Figure 2: the action of one key
+
+This is one key from the keyboard in Figure 1: a side view of a grand action with double escapement, for the note C6 (1046.5 Hz). It runs 25 times slower than real time. Between the jack letting go and the hammer hitting the string there's only about a millisecond, so that moment slows down further, to as much as 220 times. The line under the drawing tells you what's happening and how many real milliseconds have passed.
+
+<p align="center">
+  <img src="gorseller/aksiyon.gif" alt="The key goes down, the jack escapes, the hammer hits the string and the backcheck catches it" width="640">
+</p>
+
+| At rest | Hammer hits the string | Caught by the backcheck |
 |:---:|:---:|:---:|
-| <img src="gorseller/07-aksiyon-dinlenme.png" alt="Aksiyon dinlenmede" width="250"> | <img src="gorseller/08-aksiyon-vurus.png" alt="Çekiç tele vuruyor" width="250"> | <img src="gorseller/09-aksiyon-yakalayici.png" alt="Yakalayıcı çekici tutuyor" width="250"> |
+| <img src="gorseller/07-aksiyon-dinlenme.png" alt="The action at rest" width="250"> | <img src="gorseller/08-aksiyon-vurus.png" alt="The hammer hitting the string" width="250"> | <img src="gorseller/09-aksiyon-yakalayici.png" alt="The backcheck holding the hammer" width="250"> |
 
-O an işi yapan parça koyu kenarla vurgulanır. Fazlar şu sırayla ilerler:
+Whichever part is doing the work at that moment gets a dark outline. A keystroke goes like this:
 
-1. **Tuş iniyor:** Tuş denge pimi üzerinde döner. Kapstan vipeni, vipen de jakı kaldırır; jak çekici iter.
-2. **Jak kaçış düğmesinde:** Jakın ayağı düğmeye değer ve jak yavaşça yatmaya başlar.
-3. **Kaçış:** Jak çekiç topuzunun altından kayar. Çekiç tele 2 mm kala serbest kalır ve yoluna kendi hızıyla devam eder.
-4. **Tele vuruş ve geri sekme:** Çekiç teli titreşen uzunluğun 1/8'inden vurur ve geri seker.
-5. **Yakalayıcı tuttu:** Tuş basılı kaldıkça yakalayıcı çekici telin 15 mm altında tutar.
-6. **Tekrar kolu:** Tuş yarıya döndüğünde tekrar kolu yayıyla çekici havada tutar. Jak topuzun altına geri oturur ve tuşu tamamen bırakmadan ikinci vuruş yapılabilir: çift kaçış budur.
-7. **Susturucu:** Tuş bırakılınca susturucu keçesi tele iner ve sesi keser.
+1. **Key goes down.** The key pivots on its balance pin. The capstan lifts the wippen, the wippen lifts the jack, and the jack pushes the hammer up.
+2. **Jack meets the let-off button.** The jack's toe touches the button and the jack starts to tip.
+3. **Escapement.** The jack slips out from under the hammer's knuckle. The hammer is now 2 mm from the string, and from here on it travels under its own momentum.
+4. **Strike and rebound.** The hammer hits the string one eighth of the way along its speaking length and bounces back.
+5. **Check.** As long as you hold the key down, the backcheck catches the hammer 15 mm below the string.
+6. **Repetition.** Let the key rise about halfway and the repetition lever's spring holds the hammer up while the jack drops back under the knuckle. You can play the note again without letting the key all the way up. That is what double escapement means.
+7. **Damper.** When you let go, the damper felt comes down on the string and the note stops.
 
-Çok yavaş basıldığında çekiç tele ulaşamadan geri düşer; gerçek piyanoda da böyle olur.
+Press slowly enough and the hammer falls back before it reaches the string, just as it does on a real piano.
 
-## Gerçeğe dayalı değerler
+## The numbers
 
-Şekil 2'deki hareket bir kinematik modelden (`model.mjs`) ve onun üzerindeki fizik benzetiminden (`sim.mjs`) gelir. Kaçış düğmesi, düşüş vidası, yakalayıcı ve susturucunun konumları, bir piyano teknisyeninin kullandığı regülasyon değerlerinden hesaplanır.
+The motion in Figure 2 comes from a kinematic model (`model.mjs`) with a small physics simulation on top of it (`sim.mjs`). The positions of the let-off button, the drop screw, the backcheck and the damper aren't drawn by eye. They are worked out from the regulation measurements a piano technician would use.
 
-| Ölçü | Değer |
+| Measurement | Value |
 |---|---|
-| Tuş inişi | 10 mm |
-| Jakın düğmeye değmesi | 4,4 mm'de |
-| Kaçış | 8,8 mm'de (çekiç tele 2 mm kala) |
-| Düşüş | 2 mm |
-| Yakalama | telin 15 mm altında |
-| Vuruş mesafesi | 48 mm |
-| Aksiyon oranı | yaklaşık 5,2 |
-| Susturucunun kalkması | 5 mm'de |
-| Vuruş noktası | titreşen uzunluğun 1/8'i (211 mm'lik telde 26,4 mm) |
-| Çekiç hızı | p 0,8 m/s · mf 1,9 m/s · f 4,2 m/s |
+| Key dip | 10 mm |
+| Jack toe reaches the let-off button | at 4.4 mm of key travel |
+| Let-off | at 8.8 mm, with the hammer 2 mm from the string |
+| Drop | 2 mm |
+| Checking distance | 15 mm below the string |
+| Blow distance | 48 mm |
+| Action ratio | about 5.2 |
+| Damper starts to lift | at 5 mm |
+| Strike point | 1/8 of the speaking length (26.4 mm on a 211 mm string) |
+| Hammer speed at the string | p 0.8 m/s · mf 1.9 m/s · f 4.2 m/s |
 
-Şekil 1'deki bilgiler genel kuyruklu piyano değerleridir: yaklaşık 230 tel, toplamda 20 tona yaklaşan tel gerilimi, 9 mm'lik ladin ses tablosu, 88 tuş ve 88 çekiç.
+The figures in Figure 1 are typical for a grand: around 230 strings, close to 20 tonnes of tension in total, a 9 mm spruce soundboard, 88 keys and 88 hammers.
 
-## Proje yapısı
+## Project layout
 
 ```
 anatomy-piano/
-├── piyano-aksiyonu.html        derlenmiş sayfa (sistem temasına uyar)
-├── piyano-aksiyonu-koyu.html   derlenmiş sayfa (her zaman koyu)
-├── build.mjs                   sayfayı derler: iki şekli, stilleri ve canlı kodu birleştirir
-├── fig-piano.mjs               Şekil 1: adımlar, katman hareketleri, kamera çerçeveleri, malzeme renkleri
-├── piano.mjs                   piyano geometrisi: kasa, kapak, çerçeve, teller, ses tablosu, klavye, ayaklar
-├── piano-live.js               Şekil 1'in tarayıcıdaki hareketi ve çizim sırası
-├── model.mjs                   tek tuşun kinematiği ve regülasyon hesapları
-├── sim.mjs                     tuş, jak, tekrar kolu, çekiç, yakalayıcı ve susturucu benzetimi
-├── parts.mjs                   Şekil 2'nin parçaları
-├── live.js                     Şekil 2'nin tarayıcıdaki hareketi, ses ve etkileşim
-└── gorseller/                  bu dosyadaki ekran görüntüleri ve animasyonlar
+├── piyano-aksiyonu.html        the built page (follows the system theme)
+├── piyano-aksiyonu-koyu.html   the built page (always dark)
+├── build.mjs                   builds the page: both figures, the styles and the live code
+├── fig-piano.mjs               Figure 1: steps, layer movements, camera framing, material colours
+├── piano.mjs                   piano geometry: case, lid, plate, strings, soundboard, keyboard, legs
+├── piano-live.js               Figure 1 in the browser: motion and drawing order
+├── model.mjs                   single-key kinematics and the regulation maths
+├── sim.mjs                     simulation of the key, jack, repetition lever, hammer, backcheck and damper
+├── parts.mjs                   the parts of Figure 2
+├── live.js                     Figure 2 in the browser: motion, sound and input
+└── gorseller/                  the screenshots and animations used in this README
 ```
 
-## Yeniden derleme
+## Building
 
-Kodu değiştirdikten sonra sayfayı yeniden üretin:
+After changing the code, rebuild the pages:
 
 ```sh
 node build.mjs          # piyano-aksiyonu.html
 node build.mjs --dark   # piyano-aksiyonu-koyu.html
 ```
 
-Gerekenler:
+You'll need:
 
-- Node.js 18 ya da üstü.
-- Claude Code'un **anatomy** yeteneğindeki çizim kiti. Yolu `build.mjs` içindeki `SKILL` sabitinde yazar (`~/.claude/skills/anatomy`). Kit başka bir yerdeyse bu satırı güncelleyin.
+- Node.js 18 or later.
+- The drawing kit from the **anatomy** skill for Claude Code. Its path is set in the `SKILL` constant at the top of `build.mjs` (`~/.claude/skills/anatomy`). If the kit lives somewhere else, change that line.
 
-Derlenen HTML dosyası kiti kendi içine gömer; açmak için kit gerekmez.
+The kit is only needed to build. The finished HTML has everything it needs baked in.
 
-## Sınırlar
+## Known limitations
 
-- **Katmanların yönü:** Şekil 1'deki katmanlar okunabilirlik için tam dikey değil, hafif çapraz (yukarı ve kuyruğa doğru) ayrılır.
-- **Kapak:** Döküm çerçeve kalkarken kapak soluklaşıp kaybolur, çünkü açık kapak kalkan katmanlarla aynı yere düşer.
-- **Susturucular:** Şekil 1'de çizilmedi; tek tuşun susturucusu Şekil 2'de var.
-- **Tekrar kolu:** Şekil 2'de jakın arkasına, yana kaydırılmış çizildi. Gerçekte jak, kolun ortasındaki bir pencereden geçer.
-- **Çizim sırası:** Parçaların üst üste binme sırası elle ayarlandı ve ana pozlarda ekran görüntüsüyle kontrol edildi. Kitin otomatik derinlik denetimi bu çizimde çalıştırılmadı.
-- **Ses:** Basit bir sentezdir, gerçek bir piyano kaydı değildir.
+- **Layer direction.** The layers in Figure 1 don't lift straight up. They move up and slightly towards the tail, so they don't hide each other.
+- **Lid.** The lid fades out as the plate starts to lift. Left open, it would sit right where the plate and strings rise.
+- **Dampers.** Figure 1 leaves them out. You can see a damper in Figure 2.
+- **Repetition lever.** In Figure 2 it's moved sideways, behind the jack, so the jack stays visible. In a real action the jack passes through a slot in the middle of the lever.
+- **Drawing order.** Which part is drawn in front of which was set by hand and checked against screenshots of the main poses. The kit's automatic depth check wasn't run on these drawings.
+- **Sound.** The note is a simple synthesised tone, not a recording of a piano.
